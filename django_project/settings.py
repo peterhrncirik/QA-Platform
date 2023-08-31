@@ -170,3 +170,7 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
+
+# Development
+# Turn off advanced password protection for the development purposes
+AUTH_PASSWORD_VALIDATORS = []
