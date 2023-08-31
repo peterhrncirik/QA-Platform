@@ -9,6 +9,7 @@ def test_create_new_subject(new_subject):
     assert Subject.objects.all().count() == 1
 
 def test_delete_subject(new_subject):
+    assert Subject.objects.all().count() == 1
     Subject.objects.get(title='Geography').delete()
     assert Subject.objects.all().count() == 0
 
