@@ -1,6 +1,8 @@
 import factory
 from faker import Faker
 
+from django.contrib.auth.models import Group, Permission
+
 from accounts.models import CustomUser
 from courses.models import Course, Subject, Module
 
@@ -15,6 +17,7 @@ class UserFactory(factory.django.DjangoModelFactory):
     # Generate Dummy Data
     username = fake.name()
     is_staff = 'True'
+    is_superuser = 'True'
 
 class SubjectFactory(factory.django.DjangoModelFactory):
 
@@ -43,3 +46,11 @@ class ModuleFactory(factory.django.DjangoModelFactory):
     course = factory.SubFactory(CourseFactory)
     title = 'Algebra Basics'
     description = 'Introduction to Algebra'
+
+class GroupFactory(factory.django.DjangoModelFactory):
+
+    class Meta:
+        model = Group
+
+    name = 'Instructors'
+    permissions = ['courses.add_course', 'courses.change_course', 'courses.view_course', 'courses.delete_course']

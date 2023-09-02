@@ -1,12 +1,13 @@
 import pytest
 from pytest_factoryboy import register
-from factories import UserFactory, CourseFactory, SubjectFactory, ModuleFactory
+from factories import UserFactory, CourseFactory, SubjectFactory, ModuleFactory, GroupFactory
 
 # Register Factories
 register(UserFactory)
 register(CourseFactory)
 register(SubjectFactory)
 register(ModuleFactory)
+register(GroupFactory)
 
 
 @pytest.fixture

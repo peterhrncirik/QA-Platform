@@ -24,3 +24,4 @@ def test_user_instance(db, user_factory, username, email, password1, password2, 
     )
 
     assert form.is_valid() is validity
+
