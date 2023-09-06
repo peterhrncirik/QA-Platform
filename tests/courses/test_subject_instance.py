@@ -10,7 +10,6 @@ from courses.forms import SubjectForm
         ('title', '', False),
     ],
 )
-
 def test_subject_instance(db, subject_factory, title, slug, validity):
 
     form = SubjectForm(

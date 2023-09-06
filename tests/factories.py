@@ -14,10 +14,19 @@ class UserFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = CustomUser
 
-    # Generate Dummy Data
     username = fake.name()
     is_staff = 'True'
     is_superuser = 'True'
+
+    @factory.post_generation
+    def has_default_group(self, create, extracted, **kwargs):
+        if not create:
+            return
+        if extracted:
+            default_group, _ = Group.objects.get_or_create(
+                name='group'
+            )
+            self.groups.add(default_group)
 
 class SubjectFactory(factory.django.DjangoModelFactory):
 

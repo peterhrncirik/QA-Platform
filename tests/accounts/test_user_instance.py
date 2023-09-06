@@ -11,7 +11,6 @@ from accounts.forms import CustomUserCreationForm
         ('test', 'test@test', 'p1', 'p1', False), # Incorrect email 
     ],
 )
-
 def test_user_instance(db, user_factory, username, email, password1, password2, validity):
 
     form = CustomUserCreationForm(
