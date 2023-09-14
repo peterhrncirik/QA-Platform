@@ -17,3 +17,7 @@ staticfiles/
 
 # Environment Variables
 .env
+
+# Testing Coverage
+.coverage
+htmlcov/
