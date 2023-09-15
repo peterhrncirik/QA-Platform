@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "accounts",
     "pages",
     "courses",
+    "students",
     # "courses.apps.CoursesConfig",
 ]
 
