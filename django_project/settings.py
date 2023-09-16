@@ -230,6 +230,15 @@ LOGGING = {
     },
 }
 
+# Caching
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
+        'LOCATION': 'cache:11211',
+    }
+}
+
+
 # Development
 #NOTE: Turn off advanced password protection for the development purposes
 AUTH_PASSWORD_VALIDATORS = []
