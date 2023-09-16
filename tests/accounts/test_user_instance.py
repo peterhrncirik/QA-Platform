@@ -3,6 +3,9 @@ import pytest
 from accounts.models import CustomUser
 from accounts.forms import CustomUserCreationForm
 
+# from django.contrib.auth.forms import UserCreationForm
+
+
 @pytest.mark.parametrize('username, email, password1, password2,  validity', 
     [
         ('a'*151, 'test@test.com', 'p1', 'p1', False), # Username too long

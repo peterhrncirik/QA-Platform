@@ -11,6 +11,7 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('course/', include('courses.urls')),
     path('courses/', CourseListView.as_view(), name='courses_list'),
+    path('students/', include('students.urls')),
     path('', include('pages.urls')),
 ]
 

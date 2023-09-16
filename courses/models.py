@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
+from django.template.loader import render_to_string
 from accounts.models import CustomUser
 from .fields import OrderField
 
@@ -19,6 +20,7 @@ class Subject(models.Model):
 class Course(models.Model):
 
     owner = models.ForeignKey(CustomUser, related_name='courses_created', on_delete=models.CASCADE)
+    students = models.ManyToManyField(CustomUser, related_name='courses_joined', blank=True)
     subject = models.ForeignKey(Subject, related_name='courses', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
@@ -70,6 +72,12 @@ class ItemBase(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def render(self):
+        return render_to_string(
+            f'courses/content/{self._meta.model_name}.html',
+            {'item': self}
+        )
     
 class Text(ItemBase):
     content = models.TextField()
