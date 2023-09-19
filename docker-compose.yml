@@ -39,13 +39,17 @@ services:
       - db
     volumes:
       - pgadmin:/var/lib/pgadmin
-  cache:
-   image: memcached:latest
-   ports:
-     - "11211:11211"
-   entrypoint:
-    - memcached
-    - -m 64
+  # cache_memchad:
+  #  image: memcached:latest
+  #  ports:
+  #    - "11211:11211"
+  #  entrypoint:
+  #   - memcached
+  #   - -m 64
+  cache_redis:
+    image: redis:latest
+    ports:
+    - "6379:6379"
 
 volumes:
   postgres_data:
