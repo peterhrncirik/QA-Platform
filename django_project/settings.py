@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "embed_video",
     "redisboard",
+    "rest_framework",
     # Local
     "accounts",
     "pages",
@@ -246,6 +247,13 @@ CACHES = {
 CACHE_MIDDLEWARE_ALIAS = 'default'
 CACHE_MIDDLEWARE_SECONDS = 60 * 15
 CACHE_MIDDLEWARE_KEY_PREFIX = 'qa_project'
+
+# REST API
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
 
 # Development
 #NOTE: Turn off advanced password protection for the development purposes
