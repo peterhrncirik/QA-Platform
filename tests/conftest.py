@@ -1,5 +1,7 @@
 import pytest
 from pytest_factoryboy import register
+from rest_framework.test import APIClient
+
 from factories import UserFactory, CourseFactory, SubjectFactory, ModuleFactory, GroupFactory
 
 # Register Factories
@@ -9,6 +11,9 @@ register(SubjectFactory)
 register(ModuleFactory)
 register(GroupFactory)
 
+@pytest.fixture
+def api_client(db):
+    return APIClient
 
 @pytest.fixture
 def new_user(db, user_factory):

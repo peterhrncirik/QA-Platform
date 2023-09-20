@@ -6,15 +6,15 @@ from django.contrib.auth.models import Group, Permission
 from accounts.models import CustomUser
 from courses.models import Course, Subject, Module
 
-# Initialize Faker
-fake = Faker()
+
+# factory.Faker.add_provider('school_subject')
 
 class UserFactory(factory.django.DjangoModelFactory):
 
     class Meta:
         model = CustomUser
 
-    username = fake.name()
+    username = factory.Faker('name')
     is_staff = 'True'
     is_superuser = 'True'
 
@@ -33,8 +33,11 @@ class SubjectFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Subject
 
-    title = 'Mathematics'
-    slug = 'mathematics'
+    # title = 'Mathematics'
+    # slug = 'mathematics'
+
+    title = factory.Faker('school_subject')
+    slug = factory.Sequence(lambda n: f'slug-{n}')
 
 class CourseFactory(factory.django.DjangoModelFactory):
     
