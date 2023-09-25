@@ -24,4 +24,3 @@ class TestSubjectEndpoints:
         # Assert
         assert response.status_code == 200
         assert len(json.loads(response.content)) == n
-        print(response.content)

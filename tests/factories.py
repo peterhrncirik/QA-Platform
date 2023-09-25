@@ -34,7 +34,6 @@ class SubjectFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Subject
 
-
     title = factory.Faker('school_subject')
     slug = factory.Sequence(lambda n: f'slug-{n}')
 

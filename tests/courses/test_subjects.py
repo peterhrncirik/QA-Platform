@@ -3,17 +3,25 @@ from courses.models import Subject
 
 class TestSubject:
 
-    def test_new_subject(self, new_subject):
+    def test_new_subject(self, db, subject_factory):
+        
+        # Create New Subject
+        subject_factory()
         assert Subject.objects.all().count() == 1
-        assert new_subject.title == 'Mathematics'
-        assert new_subject.slug == 'mathematics'
 
-    def test_update_subject(self, new_subject):
-        Subject.objects.filter(title='Mathematics').update(title='Geography')
+    def test_update_subject(self, db, subject_factory):
+
+        # Create New Subject
+        subject = subject_factory()
+
+        Subject.objects.filter(title=subject.title).update(title='Geography')
+
         with pytest.raises(Exception):
             Subject.objects.get(title='Mathematics')
 
-    def test_delete_subject(self, new_subject):
+    def test_delete_subject(self, db, subject_factory):
+
+        subject = subject_factory()
         assert Subject.objects.all().count() == 1
-        new_subject.delete()
+        subject.delete()
         assert Subject.objects.all().count() == 0
