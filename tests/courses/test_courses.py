@@ -7,8 +7,6 @@ class TestCourses:
     def test_new_course(self, db, course_factory):
 
         course = course_factory()
-        print(course.title)
-        print(course.overview)
         assert Course.objects.all().count() == 1
         assert course.owner is not None
 

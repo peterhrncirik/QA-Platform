@@ -1,4 +1,3 @@
-import pytest
 import json 
 import random
 
@@ -24,3 +23,23 @@ class TestSubjectEndpoints:
         # Assert
         assert response.status_code == 200
         assert len(json.loads(response.content)) == n
+    
+    def test_subject_detail_get(self, subject_factory, api_client):
+
+        """
+            Returns Single Subject 
+        """
+
+        # Arrange
+        subject = subject_factory()
+
+        # Act
+        response = api_client().get(f'{self.endpoint}{subject.id}/')
+
+        # Assert
+        assert response.status_code == 200
+        assert 'id' in json.loads(response.content)
+        assert 'title' in json.loads(response.content)
+        assert 'slug' in json.loads(response.content)
+
+
