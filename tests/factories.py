@@ -5,10 +5,11 @@ from django.contrib.auth.models import Group, Permission
 from accounts.models import CustomUser
 from courses.models import Course, Subject, Module
 
-from tests.custom_providers import school_subjects_provider
+from tests.custom_providers import CustomProvider
 
 # Add Subjects Provider
-factory.Faker.add_provider(school_subjects_provider())
+factory.Faker.add_provider(CustomProvider.school_subjects_provider())
+factory.Faker.add_provider(CustomProvider.school_courses_provider())
 
 class UserFactory(factory.django.DjangoModelFactory):
 
@@ -44,9 +45,9 @@ class CourseFactory(factory.django.DjangoModelFactory):
 
     owner = factory.SubFactory(UserFactory)
     subject = factory.SubFactory(SubjectFactory)
-    title = 'Algebra'
-    slug = 'algebra'
-    overview = 'Algebra 1'
+    title = factory.Faker('school_course')
+    slug = factory.Sequence(lambda n: f'slug-{n}')
+    overview = factory.Faker('paragraph')
 
 class ModuleFactory(factory.django.DjangoModelFactory):
 
