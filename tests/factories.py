@@ -1,13 +1,14 @@
 import factory
-from faker import Faker
 
 from django.contrib.auth.models import Group, Permission
 
 from accounts.models import CustomUser
 from courses.models import Course, Subject, Module
 
+from tests.custom_providers import school_subjects_provider
 
-# factory.Faker.add_provider('school_subject')
+# Add Subjects Provider
+factory.Faker.add_provider(school_subjects_provider())
 
 class UserFactory(factory.django.DjangoModelFactory):
 
@@ -33,8 +34,6 @@ class SubjectFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Subject
 
-    # title = 'Mathematics'
-    # slug = 'mathematics'
 
     title = factory.Faker('school_subject')
     slug = factory.Sequence(lambda n: f'slug-{n}')
