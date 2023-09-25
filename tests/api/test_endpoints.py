@@ -42,4 +42,42 @@ class TestSubjectEndpoints:
         assert 'title' in json.loads(response.content)
         assert 'slug' in json.loads(response.content)
 
+class TestCourseEndpoints:
+
+    endpoint = '/api/courses/'
+
+    def test_course_enrollment_post(self, course_factory, api_client, user_factory):
+
+        """
+            Authenticated User can Enroll for a Course
+        """
+
+        # Arrange
+        course = course_factory()
+        user = user_factory()
+        #TODO: Authenticate User
+
+        # Act
+        response = api_client().post(f'{self.endpoint}{course.id}/enroll/')
+
+        # Assert
+        assert response.status_code == 200
+
+    def test_course_enrollment_unauthorized_user_post(self, course_factory, api_client):
+
+        """
+            Unauthorized User Can Not Enroll for a Course
+        """
+
+        # Arrange
+        course = course_factory()
+
+        # Act
+        response = api_client().post(f'{self.endpoint}{course.id}/enroll/')
+
+        # Assert
+        assert response.status_code == 401
+
+
+
 

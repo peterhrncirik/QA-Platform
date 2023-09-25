@@ -13,7 +13,7 @@ register(GroupFactory)
 
 @pytest.fixture
 def api_client(db):
-    return APIClient
+    yield APIClient
 
 @pytest.fixture
 def new_user(db, user_factory):
