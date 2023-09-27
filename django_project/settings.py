@@ -237,8 +237,6 @@ LOGGING = {
 # Caching
 CACHES = {
     'default': {
-        # 'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
-        # 'LOCATION': 'cache:11211',
         'BACKEND': 'django.core.cache.backends.redis.RedisCache',
         'LOCATION': 'redis://cache_redis:6379',
     }
