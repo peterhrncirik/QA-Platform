@@ -35,6 +35,9 @@ django-redisboard==8.4.0
 # APIs
 djangorestframework==3.14.0
 
+# API Documentation
+drf-spectacular==0.26.5
+
 # Testing
 pytest-django==4.5.2
 factory-boy==3.3.0

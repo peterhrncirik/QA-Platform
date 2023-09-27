@@ -33,12 +33,12 @@ INSTALLED_APPS = [
     "embed_video",
     "redisboard",
     "rest_framework",
+    "drf_spectacular", # API Documentation
     # Local
     "accounts",
     "pages",
     "courses",
     "students",
-    # "courses.apps.CoursesConfig",
 ]
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#middleware
@@ -250,9 +250,14 @@ CACHE_MIDDLEWARE_KEY_PREFIX = 'qa_project'
 
 # REST API
 REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
+}
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'QA Automation Project',
 }
 
 # Development

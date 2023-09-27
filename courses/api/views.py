@@ -12,15 +12,30 @@ from courses.api.permissions import IsEnrolled
 
 class SubjectListView(generics.ListAPIView):
 
+    """
+    Returns a list of all subjects.
+    """
+
     queryset = Subject.objects.all()
     serializer_class = SubjectSerializer
 
 class SubjectDetailView(generics.RetrieveAPIView):
 
+    """
+    Returns a detail view of specific subject.
+    """
+    
+    #TODO: Rewrite to ViewSet
     queryset = Subject.objects.all()
     serializer_class = SubjectSerializer
         
 class CourseViewSet(viewsets.ReadOnlyModelViewSet):
+
+    """
+    Courses ViewSet
+    enroll() -> enrolls user to a specific course
+    contents() -> returns a list of all contents of specific course
+    """
 
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
