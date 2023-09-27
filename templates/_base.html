@@ -24,7 +24,7 @@
 <body class="d-flex h-100 text-center text-bg-dark">
  
 <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-<header class="mb-auto">
+<header>
   <div>
     <h3 class="float-md-start mb-0">Platform</h3>
     <nav class="nav nav-masthead justify-content-center float-md-end">
@@ -32,6 +32,8 @@
       <a class="nav-link fw-bold py-1 px-0" href="{% url 'about' %}">About</a>
       <a class="nav-link fw-bold py-1 px-0" href="{% url 'courses_list' %}">Courses</a>
       <a class="nav-link fw-bold py-1 px-0" href="{% url 'manage_course_list' %}">My Courses</a>
+      <a class="nav-link fw-bold py-1 px-0" href="{% url 'account_signup' %}">Sign up</a>
+      <a class="nav-link fw-bold py-1 px-0" href="{% url 'account_login' %}">Login</a>
     </nav>
   </div>
 </header>
