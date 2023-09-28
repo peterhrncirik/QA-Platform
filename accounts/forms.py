@@ -4,6 +4,7 @@ from allauth.account.forms import SignupForm
 from django.contrib.auth.models import Group
 
 from .models import CustomUser
+from courses.models import School
 
 ROLES = (
     ('student', 'Student'),
@@ -12,16 +13,18 @@ ROLES = (
 
 class SimpleSignupForm(SignupForm):
     role = forms.ChoiceField(choices=ROLES, label='I am a:')
+    school = forms.ModelChoiceField(queryset=School.objects.all(), empty_label='Select a school')
     field_order = ['username', 'email', 'password', 'role']
 
     def save(self, request):
         user = super(SimpleSignupForm, self).save(request)
+        school = School.objects.get(name=self.cleaned_data['school'])
         if self.cleaned_data['role'] == 'student':
-            student_group = Group.objects.get(name='Students')
-            user.groups.add(student_group)
+            user.is_student = True
+            school.students.add(user)
         elif self.cleaned_data['role'] == 'teacher':
-            teacher_group = Group.objects.get(name='Instructors')
-            user.groups.add(teacher_group)
+            user.is_instructor = True
+            school.instructors.add(user)
         user.save()
         return user  
     

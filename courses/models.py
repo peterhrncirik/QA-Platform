@@ -98,8 +98,6 @@ class School(models.Model):
     students = models.ManyToManyField(CustomUser, related_name='students', blank=True)
     courses = models.ManyToManyField(Course, related_name='courses', blank=True)
     name = models.CharField(max_length=200, unique=True)
-    country = models.CharField(max_length=200)
-    address = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
