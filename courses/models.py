@@ -89,4 +89,17 @@ class Image(ItemBase):
     file = models.FileField(upload_to='images')
 
 class Video(ItemBase):
+
     url = models.URLField()
+
+class School(models.Model):
+
+    instructors = models.ManyToManyField(CustomUser, related_name='instructors', blank=True)
+    students = models.ManyToManyField(CustomUser, related_name='students', blank=True)
+    courses = models.ManyToManyField(Course, related_name='courses', blank=True)
+    name = models.CharField(max_length=200, unique=True)
+    country = models.CharField(max_length=200)
+    address = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name

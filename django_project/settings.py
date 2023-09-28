@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     "redisboard",
     "rest_framework",
     "drf_spectacular", # API Documentation
+    "django_extensions",
     # Local
     "accounts",
     "pages",
