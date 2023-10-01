@@ -29,6 +29,7 @@ I have already built some Django apps, however never really tested my code. In t
 - Various:
 	- [ ] Clean up before production deployment
 	- [ ] Deploy to production
+	- [ ] CI/CD
 
 ### Installation
 If you want to try the application locally:

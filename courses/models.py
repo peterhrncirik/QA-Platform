@@ -10,6 +10,7 @@ class Subject(models.Model):
     
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
+    instructor = models.ForeignKey(CustomUser, related_name='instructor', limit_choices_to={'is_instructor': True}, blank=True, null=True, on_delete=models.SET_NULL)
     
     class Meta:
         ordering = ['title']
